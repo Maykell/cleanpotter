@@ -2,6 +2,8 @@
 
 Projeto de exemplo de arquitetura limpa usando um endpoint que entrega os personagens do mundo de HarryPotter.
 
+![Project Image](example.png)
+
 # Executar projeto
 
 Para executar o projeto basta fazer o clone, e rodar via IDE ou no terminal via flutter run
