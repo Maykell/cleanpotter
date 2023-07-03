@@ -2,7 +2,7 @@
 
 Projeto de exemplo de arquitetura limpa usando um endpoint que entrega os personagens do mundo de HarryPotter.
 
-<img src="example.png" alt="potter clean" height="50%"/>
+<img src="example.png" alt="potter clean" width="48" height="50%"/>
 
 # Executar projeto
 
