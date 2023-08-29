@@ -1,5 +1,5 @@
 import 'package:cleanpotter/injection_container.dart';
-import 'package:cleanpotter/presentation/blocs/characters/load/load_characters_bloc.dart';
+import 'package:cleanpotter/presentation/screens/characters/bloc/characters_bloc.dart';
 import 'package:cleanpotter/presentation/screens/characters/characters_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,7 +9,7 @@ class AppRoutes {
       GoRoute(
         path: '/',
         builder: (context, state) =>
-            CharactersScreen(bloc: serviceLocator<LoadCharactersBloc>()),
+            CharactersScreen(bloc: serviceLocator<CharactersBloc>()),
       ),
     ],
   );

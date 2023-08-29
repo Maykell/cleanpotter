@@ -13,7 +13,6 @@ class CharacterListItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
       ),
       color: Colors.brown.shade50,
-      clipBehavior: Clip.antiAliasWithSaveLayer,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -22,11 +21,13 @@ class CharacterListItem extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Ink.image(
-                  image: NetworkImage(character.photo),
-                  fit: BoxFit.cover,
-                  height: 100,
-                  width: 100,
+                ClipOval(
+                  child: Image.network(
+                    character.photo,
+                    fit: BoxFit.cover,
+                    height: 100,
+                    width: 100,
+                  ),
                 ),
                 const SizedBox(
                   width: 20,
@@ -37,6 +38,7 @@ class CharacterListItem extends StatelessWidget {
                     children: [
                       Text(
                         character.name,
+                        maxLines: 2,
                         style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
@@ -47,11 +49,11 @@ class CharacterListItem extends StatelessWidget {
                         height: 8,
                       ),
                       Text(
-                        character.dateOfBirth,
+                        '${character.yearsOld()} anos',
                         style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.grey[800],
-                        ),
+                            fontSize: 20,
+                            color: Colors.grey[800],
+                            fontStyle: FontStyle.italic),
                       ),
                     ],
                   ),

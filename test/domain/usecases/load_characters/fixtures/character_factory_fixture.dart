@@ -5,11 +5,13 @@ class CharacterFactoryFixture {
         CharacterEntity(
           name: 'any_name',
           dateOfBirth: '22-02-2023',
+          yearOfBirth: 1988,
           photo: 'any_url',
         ),
         CharacterEntity(
           name: 'any_name',
           dateOfBirth: '22-02-2023',
+          yearOfBirth: 1988,
           photo: 'any_url',
         )
       ];

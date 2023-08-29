@@ -4,12 +4,14 @@ class CharacterDTO {
   String? id;
   String? name;
   String? dateOfBirth;
+  int? yearOfBirth;
   String? image;
 
   CharacterDTO({
     this.id,
     this.name,
     this.dateOfBirth,
+    this.yearOfBirth,
     this.image,
   });
 
@@ -18,6 +20,7 @@ class CharacterDTO {
       'id': id,
       'name': name,
       'dateOfBirth': dateOfBirth,
+      'yearOfBirth': yearOfBirth,
       'image': image,
     };
   }
@@ -27,6 +30,7 @@ class CharacterDTO {
       id: map['id'],
       name: map['name'] ?? 'no-name',
       dateOfBirth: map['dateOfBirth'] ?? 'no-date-birth',
+      yearOfBirth: map['yearOfBirth'] ?? 1969,
       image: map['image'] ?? 'no-image',
     );
   }
@@ -35,6 +39,7 @@ class CharacterDTO {
         id: entity.id,
         name: entity.name,
         dateOfBirth: entity.dateOfBirth,
+        yearOfBirth: entity.yearOfBirth,
         image: entity.photo,
       );
 
@@ -42,6 +47,7 @@ class CharacterDTO {
         id: id,
         name: name ?? 'no-name',
         dateOfBirth: dateOfBirth ?? 'no-date-birth',
+        yearOfBirth: yearOfBirth ?? 1969,
         photo: image ?? 'no-image',
       );
 }

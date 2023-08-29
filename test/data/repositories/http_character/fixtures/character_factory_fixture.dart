@@ -15,6 +15,7 @@ class CharacterFactoryFixture {
           id: '9e3f7ce4',
           name: 'Harry',
           dateOfBirth: '22-02-2023',
+          yearOfBirth: 1988,
           photo: 'https://ik.imagekit.io/hpapi/harry.jpg',
         )
       ];

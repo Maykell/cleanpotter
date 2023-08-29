@@ -7,7 +7,7 @@ import 'package:cleanpotter/domain/repositories/character_repository.dart';
 /// O que acontece aqui não deve afetar as entidades,
 /// Da mesma forma que as partes externas não devem afetar os casos de uso.
 
-abstract class LoadCharacters {
+abstract interface class LoadCharacters {
   Future<List<CharacterEntity>> call();
 }
 
@@ -21,3 +21,8 @@ class LoadCharactersUseCase implements LoadCharacters {
     return await repository.loadCharacters();
   }
 }
+
+//Usar classes para representar a entrada e sáida dos casos de uso
+class LoadCharactersUseCaseParams {}
+
+class LoadCharactersUseCaseOutput {}

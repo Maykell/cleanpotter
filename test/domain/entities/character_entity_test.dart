@@ -7,12 +7,15 @@ void main() {
       final character = CharacterEntity(
         name: 'Harry Potter',
         dateOfBirth: '1988-06-29',
+        yearOfBirth: 1993,
         photo: 'any_url',
       );
 
-      final age = character.ageInYears();
+      final ageByDateBirth = character.ageInYears();
+      final ageByYearBirth = character.yearsOld();
 
-      expect(age, 35);
+      expect(ageByDateBirth, 35);
+      expect(ageByYearBirth, 30);
     });
 
     test('Should throw a FormatException when date is invalid', () {
@@ -21,6 +24,7 @@ void main() {
       final character = CharacterEntity(
         name: 'Harry Potter',
         dateOfBirth: invalidDate,
+        yearOfBirth: 1988,
         photo: 'any_url',
       );
 

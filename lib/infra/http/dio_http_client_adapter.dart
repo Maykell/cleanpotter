@@ -1,35 +1,28 @@
-import 'dart:convert';
-
 import 'package:cleanpotter/data/errors/http/bad_request_error.dart';
 import 'package:cleanpotter/data/errors/http/internal_server_error.dart';
 import 'package:cleanpotter/data/http/http_client.dart';
-import 'package:http/http.dart';
+import 'package:dio/dio.dart';
 
-import '../../core/errors/unexpected_error.dart';
+class DioHttpClientAdapter implements HttpClient {
+  final Dio dio;
 
-class HttpClientAdapter implements HttpClient {
-  final Client client;
-
-  HttpClientAdapter({required this.client});
+  DioHttpClientAdapter(this.dio) {
+    dio.options.baseUrl = 'https://hp-api.onrender.com/api/';
+    dio.options.headers = {
+      'content-type': 'application/json',
+      'accept': 'application/json',
+    };
+  }
 
   @override
   Future get({required String url, Map<String, String>? headers}) async {
-    Response response =
-        await client.get(Uri.parse(url), headers: _mergedHeaders(headers));
-
+    dio.options.headers = {...dio.options.headers, ...?headers};
+    Response response = await dio.get(url);
     return _handlingResponse(response);
   }
 
-  Map<String, String> _mergedHeaders(Map<String, String>? headers) => {
-        ...{
-          'content-type': 'application/json',
-          'accept': 'application/json',
-        },
-        ...?headers
-      };
-
   dynamic _handlingResponse(Response response) {
-    final decodedResponse = jsonDecode(response.body);
+    final decodedResponse = response.data;
     switch (response.statusCode) {
       case 200:
         return decodedResponse;
@@ -39,7 +32,7 @@ class HttpClientAdapter implements HttpClient {
       case 500:
         throw InternalServerError();
       default:
-        throw UnexpectedError();
+        throw InternalServerError();
     }
   }
 }
